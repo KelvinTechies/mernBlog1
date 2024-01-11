@@ -14,6 +14,8 @@ import MasterLayout from './Components/Admin/Layouts/MasterLayout';
 import AddBlog from './Components/Admin/Screens/AddBlog';
 import ViewBlog from './Components/Admin/Screens/ViewBlog';
 import EditPost from './Components/Admin/Screens/EditPost';
+import Layouts from './Components/Blog/Layouts/Layouts';
+import Index from './Components/Blog/Screen/Index';
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +28,10 @@ export default function App() {
             <Route path="add_posts" element={<AddBlog />} />
             <Route path="view_posts" element={<ViewBlog />} />
             <Route path="edit_post/:id" element={<EditPost />} />
+          </Route>
+
+          <Route path="/" element={<Layouts />}>
+            <Route index element={<Index />} />
           </Route>
         </Routes>
       </BrowserRouter>
