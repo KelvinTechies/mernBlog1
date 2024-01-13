@@ -59,6 +59,53 @@ const getAllPost = async (req, res) => {
   }
 };
 
+const getOnePaginatedPost = async (req, res) => {
+  try {
+    const post = await Post.find({});
+
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const startIndex = (page - 1) * limit;
+    const lastIndex = page * limit;
+    const result = post.slice(startIndex, lastIndex);
+
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};
+
+const getAllPaginatedPost = async (req, res) => {
+  try {
+    const post = await Post.find({});
+
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const startIndex = (page - 1) * limit;
+    const lastIndex = page * limit;
+    const result = post.slice(startIndex, lastIndex);
+
+    const results = {};
+
+    results.totalPost = post.length;
+    results.pageCount = Math.ceil(post.length / limit);
+    if (lastIndex < post.length) {
+      results.next = {
+        page: page + 1,
+      };
+    }
+
+    if (startIndex > 0) {
+      results.prev = {
+        page: page - 1,
+      };
+    }
+    res.status(200).json({ results: results, result: result });
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};
+
 const updatePost = async (req, res) => {
   const { id } = req.params;
   const { Title, Author, Description, Category } = req.body;
@@ -105,4 +152,6 @@ export {
   sportsCatrgories,
   updatePost,
   deletPost,
+  getOnePaginatedPost,
+  getAllPaginatedPost,
 };

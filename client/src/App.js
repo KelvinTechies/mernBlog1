@@ -16,6 +16,7 @@ import ViewBlog from './Components/Admin/Screens/ViewBlog';
 import EditPost from './Components/Admin/Screens/EditPost';
 import Layouts from './Components/Blog/Layouts/Layouts';
 import Index from './Components/Blog/Screen/Index';
+import Post_Detail from './Components/Blog/Screen/Post_Detail';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +33,7 @@ export default function App() {
 
           <Route path="/" element={<Layouts />}>
             <Route index element={<Index />} />
+            <Route path="post_detail/:id" element={<Post_Detail />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,419 +1,307 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import '../../../static/css/bootstrap.min.css';
-import '../../../static/css/jquery.mCustomScrollbar.css';
-// import '../../../static/css/owl-carousel/owl.carousel.css';
-// import '../../../static/css/owl-carousel/owl.theme.css';
-// import '../../../static/css/owl-carousel/owl.transitions.css';
-// import '../../../static/owl-carousel/owl.carousel.css';
-import '../../../static/owl-carousel/owl.theme.css';
-import '../../../static/owl-carousel/owl.transitions.css';
-import '../../../static/css/RYPP.css';
-import '../../../static/css/jquery-ui.css';
-import '../../../static/css/animate.min.css';
-import '../../../static/css/Pe-icon-7-stroke.css';
-import '../../../static/css/flaticon.css';
-import '../../../static/css/style.css';
-import '../../../static/font-awesome/css/font-awesome.min.css';
-import '../../../static/js/jquery.min';
+import '../../../newAsset/assets/vendor/bootstrap/css/bootstrap.css';
+import '../../../newAsset/assets/vendor/swiper/swiper-bundle.min.css';
+import '../../../newAsset/assets/vendor/glightbox/css/glightbox.css';
+// import '../../../newAsset/assets/vendor/aos/'
+import '../../../newAsset/assets/css/main.css';
+import '../../../newAsset/assets/css/variables.css';
+import '../../../newAsset/assets/js/main';
+
 function Layouts({ children }) {
   return (
     <>
-      {/* <div className="se-pre-con" /> */}
-      <header>
-        {/* Mobile Menu Start */}
-        <div className="mobile-menu-area navbar-fixed-top hidden-sm hidden-md hidden-lg">
-          <nav className="mobile-menu" id="mobile-menu">
-            <div className="sidebar-nav">
-              <ul className="nav side-menu">
-                <li className="sidebar-search">
-                  <div className="input-group custom-search-form">
-                    <input type="text" className="form-control" placeholder="Search..." />
-                    <span className="input-group-btn">
-                      <button className="btn mobile-menu-btn" type="button">
-                        <i className="fa fa-search" />
-                      </button>
-                    </span>
-                  </div>
-                  {/* /input-group */}
-                </li>
-                <li>
-                  <a href="">Home</a>
-                </li>
-                <li>
-                  <ul className="nav nav-second-level">
-                    <li>
-                      <a href="">
-                        Home <span className="fa arrow" />
-                      </a>
-                      {/* /.nav-third-level */}
-                    </li>
-                  </ul>
-                  {/* /.nav-second-level */}
-                </li>
-                <li>
-                  <a href="">Fashion</a>
-                </li>
-                <li>
-                  <a href="">Education</a>
-                </li>
-                <li>
-                  <a href="">Sports</a>
-                </li>
-                <li>
-                  <a href="">Travel</a>
-                </li>
-                <li>
-                  <a href="">Food</a>
-                </li>
-                <li>
-                  <a href="">Lifestyle</a>
-                </li>
-                {/* social icon */}
-                <li>
-                  <div className="social">
+      <header id="header" className="header d-flex align-items-center fixed-top">
+        <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
+          <a href="/" className="logo d-flex align-items-center">
+            {/* Uncomment the line below if you also wish to use an image logo */}
+            {/* <img src="newAsset/assets/img/logo.png" alt=""> */}
+            <h1>ZenBlog</h1>
+          </a>
+          <nav id="navbar" className="navbar">
+            <ul>
+              <li>
+                <a href="/">Blog</a>
+              </li>
+              <li>
+                <a href="">Single Post</a>
+              </li>
+              <li className="dropdown">
+                <a href="">
+                  <span>Categories</span> <i className="bi bi-chevron-down dropdown-indicator" />
+                </a>
+                <ul>
+                  <li>
+                    <a href="">Search Result</a>
+                  </li>
+                  <li>
+                    <a href="#">Drop Down 1</a>
+                  </li>
+                  <li className="dropdown">
+                    <a href="#">
+                      <span>Deep Drop Down</span> <i className="bi bi-chevron-down dropdown-indicator" />
+                    </a>
                     <ul>
                       <li>
-                        <a href="#" className="facebook">
-                          <i className="fa  fa-facebook" />{' '}
-                        </a>
+                        <a href="#">Deep Drop Down 1</a>
                       </li>
                       <li>
-                        <a href="#" className="twitter">
-                          <i className="fa  fa-twitter" />
-                        </a>
+                        <a href="#">Deep Drop Down 2</a>
                       </li>
                       <li>
-                        <a href="#" className="google">
-                          <i className="fa  fa-google-plus" />
-                        </a>
+                        <a href="#">Deep Drop Down 3</a>
+                      </li>
+                      <li>
+                        <a href="#">Deep Drop Down 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Deep Drop Down 5</a>
                       </li>
                     </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </li>
+                  <li>
+                    <a href="#">Drop Down 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Drop Down 3</a>
+                  </li>
+                  <li>
+                    <a href="#">Drop Down 4</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="">About</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+            </ul>
           </nav>
-          <div className="container">
-            <div className="top_header_icon">
-              <span className="top_header_icon_wrap">
-                <a target="_blank" href="#" title="Twitter">
-                  <i className="fa fa-twitter" />
-                </a>
-              </span>
-              <span className="top_header_icon_wrap">
-                <a target="_blank" href="#" title="Facebook">
-                  <i className="fa fa-facebook" />
-                </a>
-              </span>
-              <span className="top_header_icon_wrap">
-                <a target="_blank" href="#" title="Google">
-                  <i className="fa fa-google-plus" />
-                </a>
-              </span>
-              <span className="top_header_icon_wrap">
-                <a target="_blank" href="#" title="Vimeo">
-                  <i className="fa fa-vimeo" />
-                </a>
-              </span>
-              <span className="top_header_icon_wrap">
-                <a target="_blank" href="#" title="Pintereset">
-                  <i className="fa fa-pinterest-p" />
-                </a>
-              </span>
+          {/* .navbar */}
+          <div className="position-relative">
+            <a href="#" className="mx-2">
+              <span className="bi-facebook" />
+            </a>
+            <a href="#" className="mx-2">
+              <span className="bi-twitter" />
+            </a>
+            <a href="#" className="mx-2">
+              <span className="bi-instagram" />
+            </a>
+            <a href="#" className="mx-2 js-search-open">
+              <span className="bi-search" />
+            </a>
+            <i className="bi bi-list mobile-nav-toggle" />
+            {/* ======= Search Form ======= */}
+            <div className="search-form-wrap js-search-form-wrap">
+              <form action="" className="search-form">
+                <span className="icon bi-search" />
+                <input type="text" placeholder="Search" className="form-control" />
+                <button className="btn js-search-close">
+                  <span className="bi-x" />
+                </button>
+              </form>
             </div>
-            <div id="showLeft" className="nav-icon">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
+            {/* End Search Form */}
           </div>
-        </div>
-        {/* Mobile Menu End */}
-        {/* top header */}
-        {/* <div class="top_banner_wrap">
-      <div class="container">
-          <div class="row">
-          </div>
-      </div>
-  </div> */}
-        {/* navber */}
-        <div className="container hidden-xs">
-          <nav className="navbar">
-            <div className="collapse navbar-collapse">
-              <ul className="nav navbar-nav">
-                <li className="active">
-                  <a href="/" className="category01">
-                    HOME
-                  </a>
-                </li>
-                <li className="dropdown">
-                  <a href="" className="dropdown-toggle category02">
-                    Education <span className="" />
-                  </a>
-                </li>
-                <li className="dropdown">
-                  <a href="" className="dropdown-toggle category03">
-                    Sports <span className="" />
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="category04">
-                    FASHION
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="category05">
-                    TRAVEL
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="category06">
-                    FOOD
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="category08">
-                    LIFESTYLE
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* navbar-collapse */}
-          </nav>
         </div>
       </header>
+      {/* End Header */}
+
       {children}
       <Outlet />
-
-      <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-4">
-              <div className="footer-box">
-                <h3 className="category-headding">POPULAR TAGS</h3>
-                <div className="headding-border" />
-                <a className="tag" href="" title="">
-                  EDUCATION
-                </a>
-                <a className="tag" href="" title="">
-                  ENTERTAINMENT
-                </a>
-                <a className="tag" href="" title="">
-                  BLOG
-                </a>
-                <div className="newsletter-inner">
-                  {/* newsletter */}
-                  <h3 className="category-headding ">NEWSLETTER</h3>
-                  <div className="headding-border" />
-                  <p>Enter your email address for our mailing list!</p>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required=""
-                  />
-                  <button type="button" className="btn btn-style">
-                    Subscribe
-                  </button>
-                </div>
-                {/* /.newsletter */}
+      <footer id="footer" className="footer">
+        <div className="footer-content">
+          <div className="container">
+            <div className="row g-5">
+              <div className="col-lg-4">
+                <h3 className="footer-heading">About ZenBlog</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem deleniti
+                  voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae officiis qui aliquid
+                  blanditiis omnis quae. Explicabo?
+                </p>
+                <p>
+                  <a href="" className="footer-link-more">
+                    Learn More
+                  </a>
+                </p>
               </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="footer-box">
-                {/* featured news */}
-                <h3 className="category-headding "> NEWS</h3>
-                <div className="headding-border bg-color-2" />
-                {'{'}% for blog in blogs %{'}'}
-                <div className="box-item wow fadeIn" data-wow-duration="2s">
-                  <div className="img-thumb">
-                    {'{'}% if blog.Image %{'}'}
-                    <a href="#" rel="bookmark">
-                      <img className="entry-thumb" src='alt=""' height={80} width={100} />
+              <div className="col-6 col-lg-2">
+                <h3 className="footer-heading">Navigation</h3>
+                <ul className="footer-links list-unstyled">
+                  <li>
+                    <a href="/">
+                      <i className="bi bi-chevron-right" /> Home
                     </a>
-                    {'{'}% endif %{'}'}
-                  </div>
-                  <div className="item-details">
-                    <h6 className="sub-category-title bg-color-1">
-                      <a href="#">
-                        {'{'}
-                        {'{'}blog.Category{'}'}
-                        {'}'}
-                      </a>
-                    </h6>
-                    <h3 className="td-module-title">
-                      <a href="#">
-                        {'{'}
-                        {'{'}blog.Title{'}'}
-                        {'}'}
-                      </a>
-                    </h3>
-                    <div className="post-editor-date">
-                      {/* post date */}
-                      <div className="post-date">
-                        <i className="pe-7s-clock" /> {'{'}
-                        {'{'} blog.Date_Created {'}'}
-                        {'}'}
-                      </div>
-                      {/* post comment */}
-                      <div className="post-author-comment">
-                        <i className="pe-7s-comment" /> 13{' '}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {'{'}% endfor %{'}'}
-              </div>
-              {/* /.featured news */}
-            </div>
-            <div className="col-sm-4">
-              <div className="footer-box">
-                <h3 className="category-headding ">Popular NEWS</h3>
-                <div className="headding-border bg-color-2" />
-                {'{'}% for post in posts %{'}'}
-                <div className="box-item wow fadeIn" data-wow-duration="2s">
-                  <div className="img-thumb">
-                    {'{'}% if post.Image %{'}'}
-                    <a href="#" rel="bookmark">
-                      <img className="entry-thumb" src='alt=""' height={80} width={100} />
+                  </li>
+                  <li>
+                    <a href="/">
+                      <i className="bi bi-chevron-right" /> Blog
                     </a>
-                    {'{'}% endif %{'}'}
-                  </div>
-                  <div className="item-details">
-                    <h6 className="sub-category-title bg-color-1">
-                      <a href="#">
-                        {'{'}
-                        {'{'}post.Category{'}'}
-                        {'}'}
-                      </a>
-                    </h6>
-                    <h3 className="td-module-title">
-                      <a href="#">
-                        {'{'}
-                        {'{'}post.Title{'}'}
-                        {'}'}
-                      </a>
-                    </h3>
-                    <div className="post-editor-date">
-                      {/* post date */}
-                      <div className="post-date">
-                        <i className="pe-7s-clock" /> {'{'}
-                        {'{'} post.Date_Created {'}'}
-                        {'}'}
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Categories
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Single Post
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-6 col-lg-2">
+                <h3 className="footer-heading">Categories</h3>
+                <ul className="footer-links list-unstyled">
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Business
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Culture
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Sport
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Food
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Politics
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Celebrity
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Startups
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="bi bi-chevron-right" /> Travel
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-lg-4">
+                <h3 className="footer-heading">Recent Posts</h3>
+                <ul className="footer-links footer-blog-entry list-unstyled">
+                  <li>
+                    <a href="" className="d-flex align-items-center">
+                      <img src="newAsset/assets/img/post-sq-1.jpg" alt="" className="img-fluid me-3" />
+                      <div>
+                        <div className="post-meta d-block">
+                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
+                        </div>
+                        <span>5 Great Startup Tips for Female Founders</span>
                       </div>
-                      {/* post comment */}
-                      <div className="post-author-comment">
-                        <i className="pe-7s-comment" /> 13{' '}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="d-flex align-items-center">
+                      <img src="newAsset/assets/img/post-sq-2.jpg" alt="" className="img-fluid me-3" />
+                      <div>
+                        <div className="post-meta d-block">
+                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
+                        </div>
+                        <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                {'{'}% endfor %{'}'}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="d-flex align-items-center">
+                      <img src="newAsset/assets/img/post-sq-3.jpg" alt="" className="img-fluid me-3" />
+                      <div>
+                        <div className="post-meta d-block">
+                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
+                        </div>
+                        <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="d-flex align-items-center">
+                      <img src="newAsset/assets/img/post-sq-4.jpg" alt="" className="img-fluid me-3" />
+                      <div>
+                        <div className="post-meta d-block">
+                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
+                        </div>
+                        <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            {/* /.top rated  */}
           </div>
-          <hr />
-          <div className="row">
-            <div className="col-sm-3">
-              <div className="footer-box footer-logo-address">
-                {/* address  */}
-                <img src="{% static 'images/footer-logo.png' %}" className="img-responsive" alt="" />
-                <address>
-                  Nigeria
-                  <br /> Tel: +2348162942636
-                  <br /> Email: codewithsastech@gmail.com
-                </address>
+        </div>
+        <div className="footer-legal">
+          <div className="container">
+            <div className="row justify-content-between">
+              <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <div className="copyright">
+                  © Copyright{' '}
+                  <strong>
+                    <span>ZenBlog</span>
+                  </strong>
+                  . All Rights Reserved
+                </div>
+                <div className="credits">
+                  Designed by{' '}
+                  <a href="https://oviasuyiosagioduwa.vercel.app/" target="_blank">
+                    Osagioduwa
+                  </a>
+                </div>
               </div>
-              {/* /.address  */}
-            </div>
-            <div className="col-sm-3">
-              <div className="footer-box">
-                <h3 className="category-headding">categories</h3>
-                <div className="headding-border bg-color-4" />
-                <ul>
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="">Blog</a>
-                  </li>
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="">News</a>
-                  </li>
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="">Education</a>
-                  </li>
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="">Football</a>
-                  </li>
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="">Entertainment</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="footer-box">
-                <h3 className="category-headding">Trending STORIES</h3>
-                <div className="headding-border bg-color-5" />
-                <ul>
-                  {'{'}% for post in posts%{'}'}
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="#">
-                      {'{'}
-                      {'{'}post.Title|slice:20{'}'}
-                      {'}'}...
-                    </a>
-                  </li>
-                  {'{'}%endfor%{'}'}
-                </ul>
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="footer-box">
-                <h3 className="category-headding ">POPULAR STORIES</h3>
-                <div className="headding-border" />
-                <ul>
-                  {'{'}% for blog in blogs%{'}'}
-                  <li>
-                    <i className="fa fa-dot-circle-o" />
-                    <a href="#">
-                      {'{'}
-                      {'{'}blog.Title|slice:20{'}'}
-                      {'}'}...
-                    </a>
-                  </li>
-                  {'{'}%endfor%{'}'}
-                </ul>
+              <div className="col-md-6">
+                <div className="social-links mb-3 mb-lg-0 text-center text-md-end">
+                  <a href="#" className="twitter">
+                    <i className="bi bi-twitter" />
+                  </a>
+                  <a href="#" className="facebook">
+                    <i className="bi bi-facebook" />
+                  </a>
+                  <a href="#" className="instagram">
+                    <i className="bi bi-instagram" />
+                  </a>
+                  <a href="#" className="google-plus">
+                    <i className="bi bi-skype" />
+                  </a>
+                  <a href="#" className="linkedin">
+                    <i className="bi bi-linkedin" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </footer>
-      <div className="sub-footer">
-        {/* sub footer */}
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12">
-              <p>
-                <a href="#" className="color-1">
-                  Klog
-                </a>{' '}
-                | All right Reserved 2023
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
