@@ -1,10 +1,29 @@
 import Post from "../Models/PostModels.js";
+// import multer from "multer";
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "my-uploads");
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueSuffix = Date.now();
+//     cb(null, uniqueSuffix + file.originalname);
+//   },
+// });
+
+// const upload = multer({ storage: storage });
 
 const createPost = async (req, res) => {
   const { Title, Author, Description, Category } = req.body;
-
+  const fileName = req.file.filename;
   try {
-    const post = await Post.create({ ...req.body });
+    const post = await Post.create({
+      Title,
+      Author,
+      Description,
+      Category,
+      Image: fileName,
+    });
     if (post) {
       res.status(201).json({ success: post });
     } else {
@@ -109,14 +128,19 @@ const getAllPaginatedPost = async (req, res) => {
 const updatePost = async (req, res) => {
   const { id } = req.params;
   const { Title, Author, Description, Category } = req.body;
+  const fileName = req.file.filename;
 
   try {
     const post = await Post.findById(id);
 
     if (post) {
-      const newPost = await Post.findOneAndUpdate(post._id, req.body, {
-        new: true,
-      });
+      const newPost = await Post.findOneAndUpdate(
+        post._id,
+        { Title, Author, Description, Category, Image: fileName },
+        {
+          new: true,
+        }
+      );
       if (newPost) {
         res.status(201).json(newPost);
       } else {

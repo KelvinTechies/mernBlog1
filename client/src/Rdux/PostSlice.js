@@ -14,6 +14,7 @@ const postSlice = createSlice({
           description: post.Description,
           author: post.Author,
           category: post.Category,
+          img: post.Image,
         };
       });
     },
@@ -30,6 +31,7 @@ const postSlice = createSlice({
         Category: action.payload.category,
         Author: action.payload.author,
         Description: action.payload.description,
+        Image: action.payload.file,
       };
     },
 

@@ -14,7 +14,9 @@ function ViewBlog() {
         console.log(res.data);
         dispatch(getAllPosts(res.data));
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   const deletePost = (id) => {
     axios
@@ -23,6 +25,10 @@ function ViewBlog() {
         dispatch(deletePost({ id }));
       })
       .catch((err) => console.log(err));
+  };
+  const getTwentyWords = (text) => {
+    const wrds = text.split(' ');
+    return wrds.slice(0, 20).join(' ');
   };
   useEffect(() => {
     fetchAllPosts();
@@ -37,6 +43,7 @@ function ViewBlog() {
             <th scope="col">Author</th>
             <th scope="col">Category</th>
             <th scope="col">Description</th>
+            <th scope="col">Image</th>
             <th scope="col">edit</th>
           </tr>
         </thead>
@@ -48,7 +55,10 @@ function ViewBlog() {
                   <td>{post.title}</td>
                   <td>{post.author}</td>
                   <td>{post.category}</td>
-                  <td>{post.description}</td>
+                  <td>{getTwentyWords(post.description)}...</td>
+                  <td>
+                    <img src={`http://localhost:3000/my-uploads/${post.img}`} width={200} alt="img" />
+                  </td>
                   <td>
                     <NavLink className="btn btn-info" to={`/admin/edit_post/${post.id}`}>
                       Edit

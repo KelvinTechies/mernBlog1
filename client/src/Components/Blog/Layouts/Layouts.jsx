@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import '../../../newAsset/assets/vendor/bootstrap/css/bootstrap.css';
 import '../../../newAsset/assets/vendor/swiper/swiper-bundle.min.css';
@@ -8,8 +8,26 @@ import '../../../newAsset/assets/vendor/glightbox/css/glightbox.css';
 import '../../../newAsset/assets/css/main.css';
 import '../../../newAsset/assets/css/variables.css';
 import '../../../newAsset/assets/js/main';
+import axios from 'axios';
 
 function Layouts({ children }) {
+  const [toggleNav, setToggleNav] = useState(false);
+  const navigate = useNavigate();
+
+  const [paginateFour, setPaginatepaginateFour] = useState([]);
+  const handleToggleNav = () => {
+    setToggleNav((prev) => !prev);
+  };
+
+  const getDatas = async () => {
+    const rrR = await axios.get('http://localhost:7000/post/getOnePaginatedPost?page=1&limit=4').then((res) => {
+      setPaginatepaginateFour(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getDatas();
+  }, [navigate, paginateFour]);
   return (
     <>
       <header id="header" className="header d-flex align-items-center fixed-top">
@@ -31,45 +49,6 @@ function Layouts({ children }) {
                 <a href="">
                   <span>Categories</span> <i className="bi bi-chevron-down dropdown-indicator" />
                 </a>
-                <ul>
-                  <li>
-                    <a href="">Search Result</a>
-                  </li>
-                  <li>
-                    <a href="#">Drop Down 1</a>
-                  </li>
-                  <li className="dropdown">
-                    <a href="#">
-                      <span>Deep Drop Down</span> <i className="bi bi-chevron-down dropdown-indicator" />
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#">Deep Drop Down 1</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 2</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 3</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 4</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 5</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">Drop Down 2</a>
-                  </li>
-                  <li>
-                    <a href="#">Drop Down 3</a>
-                  </li>
-                  <li>
-                    <a href="#">Drop Down 4</a>
-                  </li>
-                </ul>
               </li>
               <li>
                 <a href="">About</a>
@@ -212,50 +191,28 @@ function Layouts({ children }) {
               <div className="col-lg-4">
                 <h3 className="footer-heading">Recent Posts</h3>
                 <ul className="footer-links footer-blog-entry list-unstyled">
-                  <li>
-                    <a href="" className="d-flex align-items-center">
-                      <img src="newAsset/assets/img/post-sq-1.jpg" alt="" className="img-fluid me-3" />
-                      <div>
-                        <div className="post-meta d-block">
-                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
-                        </div>
-                        <span>5 Great Startup Tips for Female Founders</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="d-flex align-items-center">
-                      <img src="newAsset/assets/img/post-sq-2.jpg" alt="" className="img-fluid me-3" />
-                      <div>
-                        <div className="post-meta d-block">
-                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
-                        </div>
-                        <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="d-flex align-items-center">
-                      <img src="newAsset/assets/img/post-sq-3.jpg" alt="" className="img-fluid me-3" />
-                      <div>
-                        <div className="post-meta d-block">
-                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
-                        </div>
-                        <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="d-flex align-items-center">
-                      <img src="newAsset/assets/img/post-sq-4.jpg" alt="" className="img-fluid me-3" />
-                      <div>
-                        <div className="post-meta d-block">
-                          <span className="date">Culture</span> <span className="mx-1">•</span> <span>Jul 5th '22</span>
-                        </div>
-                        <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
-                      </div>
-                    </a>
-                  </li>
+                  {paginateFour.map((item) => {
+                    return (
+                      <>
+                        <li>
+                          <a href="" className="d-flex align-items-center">
+                            <img
+                              src={`http://localhost:3000/my-uploads/${item.Image}`}
+                              alt=""
+                              className="img-fluid me-3"
+                            />
+                            <div>
+                              <div className="post-meta d-block">
+                                <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}
+                                <span>{new Date(item.createdAt).toLocaleString()}</span>
+                              </div>
+                              <span>{item.Title}</span>
+                            </div>
+                          </a>
+                        </li>
+                      </>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

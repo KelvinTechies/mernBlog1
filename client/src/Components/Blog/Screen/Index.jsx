@@ -113,84 +113,32 @@ function Index() {
     <>
       <main id="main">
         {/* ======= Hero Slider Section ======= */}
-        <section id="hero-slider" className="hero-slider">
+        {/* <section id="hero-slider" className="hero-slider">
           <div className="container-md" data-aos="fade-in">
             <div className="row">
               <div className="col-12">
                 <div className="swiper sliderFeaturedPosts">
                   <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <a
-                        href=""
-                        className="img-bg d-flex align-items-end"
-                        style={{
-                          backgroundImage: 'url("newAsset/assets/img/post-slide-1.jpg")',
-                        }}
-                      >
-                        <div className="img-bg-inner">
-                          <h2>The Best Homemade Masks for Face (keep the Pimples Away)</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                            minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime
-                            inventore repudiandae quidem necessitatibus rem atque.
-                          </p>
-                        </div>
-                      </a>
-                    </div>
-                    <div className="swiper-slide">
-                      <a
-                        href=""
-                        className="img-bg d-flex align-items-end"
-                        style={{
-                          backgroundImage: 'url("newAsset/assets/img/post-slide-2.jpg")',
-                        }}
-                      >
-                        <div className="img-bg-inner">
-                          <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                            minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime
-                            inventore repudiandae quidem necessitatibus rem atque.
-                          </p>
-                        </div>
-                      </a>
-                    </div>
-                    <div className="swiper-slide">
-                      <a
-                        href=""
-                        className="img-bg d-flex align-items-end"
-                        style={{
-                          backgroundImage: 'url("newAsset/assets/img/post-slide-3.jpg")',
-                        }}
-                      >
-                        <div className="img-bg-inner">
-                          <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                            minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime
-                            inventore repudiandae quidem necessitatibus rem atque.
-                          </p>
-                        </div>
-                      </a>
-                    </div>
-                    <div className="swiper-slide">
-                      <a
-                        href=""
-                        className="img-bg d-flex align-items-end"
-                        style={{
-                          backgroundImage: 'url("newAsset/assets/img/post-slide-4.jpg")',
-                        }}
-                      >
-                        <div className="img-bg-inner">
-                          <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                            minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime
-                            inventore repudiandae quidem necessitatibus rem atque.
-                          </p>
-                        </div>
-                      </a>
-                    </div>
+                    {datas.map((data) => {
+                      <div className="swiper-slide">
+                        <a
+                          href=""
+                          className="img-bg d-flex align-items-end"
+                          style={{
+                            backgroundImage: 'url{`http://localhost:3000/my-uploads/${data.Image}`}',
+                          }}
+                        >
+                          <div className="img-bg-inner">
+                            <h2>{data.Title}</h2>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia!
+                              Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime
+                              inventore repudiandae quidem necessitatibus rem atque.
+                            </p>
+                          </div>
+                        </a>
+                      </div>;
+                    })}
                   </div>
                   <div className="custom-swiper-button-next">
                     <span className="bi-chevron-right" />
@@ -203,7 +151,7 @@ function Index() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* End Hero Slider Section */}
         {/* ======= Post Grid Section ======= */}
         <section id="posts" className="posts">
@@ -215,7 +163,7 @@ function Index() {
                     <>
                       <div className="post-entry-1 lg" key={data._id}>
                         <a href={'/post_detail/' + data._id}>
-                          <img src="newAsset/assets/img/post-landscape-1.jpg" alt="" className="img-fluid" />
+                          <img src={`http://localhost:3000/my-uploads/${data.Image}`} alt="" className="img-fluid" />
                         </a>
                         <div className="post-meta">
                           <span className="date">{data.Category}</span> <span className="mx-1">•</span>{' '}
@@ -246,7 +194,11 @@ function Index() {
                         <>
                           <div className="post-entry-1" key={item._id}>
                             <a href={'/post_detail/' + item._id}>
-                              <img src="newAsset/assets/img/post-landscape-7.jpg" alt="" className="img-fluid" />
+                              <img
+                                src={`http://localhost:3000/my-uploads/${item.Image}`}
+                                alt=""
+                                className="img-fluid"
+                              />
                             </a>
                             <div className="post-meta">
                               <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}
@@ -266,7 +218,11 @@ function Index() {
                         <>
                           <div className="post-entry-1" key={item._id}>
                             <a href={'/post_detail' + item._id}>
-                              <img src="newAsset/assets/img/post-landscape-3.jpg" alt="" className="img-fluid" />
+                              <img
+                                src={`http://localhost:3000/my-uploads/${item.Image}`}
+                                alt=""
+                                className="img-fluid"
+                              />
                             </a>
                             <div className="post-meta">
                               <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}
@@ -327,7 +283,7 @@ function Index() {
                     <>
                       <div className="d-lg-flex post-entry-2">
                         <a href={'/post_detail/' + item._id} className="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
-                          <img src="newAsset/assets/img/post-landscape-6.jpg" alt="" className="img-fluid" />
+                          <img src={`http://localhost:3000/my-uploads/${item.Image}`} className="img-fluid" />
                         </a>
                         <div>
                           <div className="post-meta">
@@ -340,7 +296,11 @@ function Index() {
                           <p>{getTwentyWords(item.Description)}...</p>
                           <div className="d-flex align-items-center author">
                             <div className="photo">
-                              <img src="newAsset/assets/img/person-2.jpg" alt="" className="img-fluid" />
+                              <img
+                                src={`http://localhost:3000/my-uploads/${item.Image}`}
+                                alt=""
+                                className="img-fluid"
+                              />
                             </div>
                             <div className="name">
                               <h3 className="m-0 p-0">{item.Author}</h3>
@@ -390,7 +350,7 @@ function Index() {
                 {paginateSingle.map((item) => {
                   <div className="post-entry-1 lg" key={item._id}>
                     <a href={'/post_detail/' + item._id}>
-                      <img src="newAsset/assets/img/post-landscape-8.jpg" alt="" className="img-fluid" />
+                      <img src={`http://localhost:3000/my-uploads/${item.Image}`} alt="" className="img-fluid" />
                     </a>
                     <div className="post-meta">
                       <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}
@@ -402,7 +362,7 @@ function Index() {
                     <p className="mb-4 d-block">{getTwentyWords(item.Description)}...</p>
                     <div className="d-flex align-items-center author">
                       <div className="photo">
-                        <img src="newAsset/assets/img/person-7.jpg" alt="" className="img-fluid" />
+                        <img src={`http://localhost:3000/my-uploads/${item.Image}`} alt="" className="img-fluid" />
                       </div>
                       <div className="name">
                         <h3 className="m-0 p-0">{item.Author}</h3>
@@ -432,7 +392,11 @@ function Index() {
                         <>
                           <div className="post-entry-1" key={item.id}>
                             <a href={'/post_detail/' + item.id}>
-                              <img src="newAsset/assets/img/post-landscape-3.jpg" alt="" className="img-fluid" />
+                              <img
+                                src={`http://localhost:3000/my-uploads/${item.Image}`}
+                                alt=""
+                                className="img-fluid"
+                              />
                             </a>
                             <div className="post-meta">
                               <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}
@@ -452,7 +416,11 @@ function Index() {
                         <>
                           <div className="post-entry-1" key={item._id}>
                             <a href={'/post_detail/' + item.id}>
-                              <img src="newAsset/assets/img/post-landscape-7.jpg" alt="" className="img-fluid" />
+                              <img
+                                src={`http://localhost:3000/my-uploads/${item.Image}`}
+                                alt=""
+                                className="img-fluid"
+                              />
                             </a>
                             <div className="post-meta">
                               <span className="date">{item.Category}</span> <span className="mx-1">•</span>{' '}

@@ -63,7 +63,7 @@ function Post_Detail() {
                 {/* ======= Single Post Content ======= */}
                 <div className="single-post">
                   <figure className="my-4">
-                    <img src="/newAsset/assets/img/post-landscape-1.jpg" alt="" className="img-fluid" />
+                    <img src={`http://localhost:3000/my-uploads/${datas.Image}`} alt="" className="img-fluid" />
                     <figcaption>{datas.Title}</figcaption>
                   </figure>
                   <div className="post-meta">

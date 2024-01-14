@@ -9,6 +9,7 @@ function AddBlog() {
   const [Author, setAuthor] = useState('');
   const [Category, setCategory] = useState('');
   const [Description, setDescription] = useState('');
+  const [file, setFile] = useState('');
 
   const dispatch = useDispatch();
   const datas = { Title, Category, Author, Description };
@@ -16,18 +17,40 @@ function AddBlog() {
 
   const addPost = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append('Title', Title);
+    formData.append('Author', Author);
+    formData.append('Category', Category);
+    formData.append('Description', Description);
+    formData.append('file', file);
     axios
-      .post('http://localhost:7000/post', datas)
-      .then((res) => {
-        dispatch(addPosts(res.data.success));
-        console.log(res);
+      .post('http://localhost:7000/post', formData, {
+        headers: { 'Content-Type': 'multipart/formdata' },
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        // dispatch(addPosts(res.data.success));
+        console.log(res.data);
+      })
+      .catch((error) => {
+        // Handle error
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error('Response error:', error.response.status, error.response.data);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('Request error:', error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Error:', error.message);
+        }
+      });
     navigate('/admin/view_posts');
   };
   return (
     <div>
-      <form onSubmit={addPost}>
+      <form onSubmit={addPost} encType="multipart/formdata">
         <div className="row g-3">
           <div className="col">
             <input
@@ -59,6 +82,16 @@ function AddBlog() {
               className="form-control"
               placeholder="Category"
               aria-label="Category"
+            />
+          </div>
+          <div className="col">
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files)}
+              className="form-control"
+              placeholder="Category"
+              aria-label="Category"
+              name="file"
             />
           </div>
           <div class="mb-3">

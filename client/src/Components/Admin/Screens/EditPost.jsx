@@ -15,25 +15,38 @@ function EditPost() {
   const [Author, setAuthor] = useState(p_id.author);
   const [Category, setCategory] = useState(p_id.category);
   const [Description, setDescription] = useState(p_id.description);
+  const [file, setFile] = useState('');
 
   const dispatch = useDispatch();
-  const datas = { Title, Category, Author, Description };
+  // const datas = { Title, Category, Author, Description, Image };
+
   const navigate = useNavigate();
   const updateHandler = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append('Title', Title);
+    formData.append('Author', Author);
+    formData.append('Category', Category);
+    formData.append('Description', Description);
+    formData.append('file', file);
     axios
-      .put('http://localhost:7000/post/' + id, datas)
+      .put('http://localhost:7000/post/' + id, formData, {
+        headers: { 'Content-Type': 'multipart/formdata' },
+      })
       .then((res) => {
-        dispatch(updatePost({ id, Title, Category, Author, Description }));
+        // dispatch(updatePost({ id, Title, Category, Author, Description, file: Image }));
         console.log(res);
       })
       .catch((err) => console.log(err));
-    navigate('/admin/view_posts');
+    // navigate('/admin/view_posts');
+    console.log(file);
   };
 
   return (
     <div>
-      <form onSubmit={updateHandler}>
+      <form onSubmit={updateHandler} encType="multipart/formdata">
         <div className="row g-3">
           <div className="col">
             <input
@@ -62,6 +75,15 @@ function EditPost() {
               type="text"
               value={Category}
               onChange={(e) => setCategory(e.target.value)}
+              className="form-control"
+              placeholder="Category"
+              aria-label="Category"
+            />
+          </div>
+          <div className="col">
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
               className="form-control"
               placeholder="Category"
               aria-label="Category"
