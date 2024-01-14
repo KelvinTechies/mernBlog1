@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 // import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 
@@ -17,6 +17,8 @@ import EditPost from './Components/Admin/Screens/EditPost';
 import Layouts from './Components/Blog/Layouts/Layouts';
 import Index from './Components/Blog/Screen/Index';
 import Post_Detail from './Components/Blog/Screen/Post_Detail';
+import Register from './Components/Admin/Screens/Register';
+import Login from './Components/Admin/Screens/Login';
 
 // ----------------------------------------------------------------------
 
@@ -26,10 +28,15 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="admin" element={<MasterLayout />}>
-            <Route path="add_posts" element={<AddBlog />} />
-            <Route path="view_posts" element={<ViewBlog />} />
-            <Route path="edit_post/:id" element={<EditPost />} />
+            <Route
+              path="add_posts"
+              element={localStorage.getItem('user') ? <AddBlog /> : <Navigate to="/admin/login" />}
+            />
+            <Route path="view_posts" element={localStorage.getItem('user') ? <ViewBlog /> : <Login />} />
+            <Route path="edit_post/:id" element={localStorage.getItem('user') ? <EditPost /> : <Login />} />
           </Route>
+          <Route path="/admin/register" element={<Register />} />
+          <Route path="/admin/login" element={<Login />} />
 
           <Route path="/" element={<Layouts />}>
             <Route index element={<Index />} />

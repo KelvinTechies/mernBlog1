@@ -6,6 +6,10 @@ import router from "./Routers/UserRoutes.js";
 import postRoute from "./Routers/PostRoutes.js";
 import commentRouter from "./Routers/Comment.js";
 import dotenv from "dotenv";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
 dotenv.config();
 
 const app = express();
